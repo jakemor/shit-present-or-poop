@@ -1,6 +1,6 @@
 # Shit Present or Poop!
 
-Website for [Shit Present or Poop](shitpresentorpoop.com)
+Website for [shitpresentorpoop.com](http://www.shitpresentorpoop.com)
 
 ## Game Overview
 
