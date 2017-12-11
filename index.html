@@ -466,6 +466,7 @@
 
 		function pressedPlay(e) {
 			nextLevel(e)
+			// gameOver()
 		}
 
 		function pressedPresent(e) {
@@ -641,6 +642,16 @@
 			margin: 0.5rem;
 		}
 
+		.code-link {
+			color: black;
+			cursor: pointer;
+		}
+
+		.code-link:hover {
+			text-decoration: none;
+			color: black;
+		}
+
 
 	</style>
 
@@ -665,7 +676,7 @@
 
 			<img class="img-fluid main-content" src="./assets/img/happy-box-logo.png" style="width: 30%; max-width: 150px; margin: 2rem 0 1rem 0;">
 			
-			<a href="http://happyboxstore.com"></a>
+			<a href="http://happyboxstore.com" target="_blank" class="code-link">
 				<div style="width: 100%; min-width: 280px; margin-top: 1rem; margin-right: auto; margin-left: auto; text-shadow: none;">
 					<p class="promo-text-top">
 						Use <span style="font-family: Avenir-Medium;"> GIFTHAPPY</span> For
@@ -674,6 +685,7 @@
 						<span style="font-family: Escafina-High;">25%</span> off happyboxstore.com
 					</p>
 				</div>
+			</a>
 
 			<p style="font-family: Avenir-Medium; text-shadow: none; margin-top: 2rem;">SHARE THE GAME</p>
 
