@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="http://shitpresentorpoop.com/favicon.ico">
+
+	<title>Shit Present or Poop? </title>
+
+
+	<style type="text/css">
+
+	</style>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+
+	<style type="text/css">
+
+		@font-face { 
+			font-family: Escafina-High;
+			src: url('./assets/fonts/Escafina-High.otf'); 
+		} 
+ 		
+ 		@font-face { 
+			font-family: Escafina-Low;
+			src: url('./assets/fonts/Escafina-Low.otf'); 
+ 		}
+
+ 		@font-face { 
+			font-family: Escafina-Medium;
+			src: url('./assets/fonts/Escafina-Medium.otf'); 
+ 		}
+
+ 		@font-face { 
+			font-family: Avenir-Light;
+			src: url('./assets/fonts/Avenir-Light.otf'); 
+ 		}
+
+ 		@font-face { 
+			font-family: Avenir-Medium;
+			src: url('./assets/fonts/Avenir-Medium.otf'); 
+ 		}
+		
+
+
+		div.start-container {
+			background-color: #C8A254;
+			height: 100vh;
+			background: url(./assets/img/play-bg.png) no-repeat center center fixed;
+			background-size: cover;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+		}
+
+		div.game-over-container {
+			background-color: #C8A254;
+			height: 100vh;
+			background: url(./assets/img/game-over-bg.png) no-repeat center center fixed;
+			background-size: cover;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+		}
+
+		body {
+			text-shadow: 0px 1px 3px #000000;
+			font-family: Avenir-Light;
+		}
+
+		div.play-container {
+			background-color: gray;
+			height: 100vh;
+		}
+
+		div.response-container {
+			background-color: #D82F37;
+			height: 100vh;
+			display: fixed;
+			z-index: 100;
+		}
+
+		div.red-ribbon-container {
+			width: 100%;
+			height: 85vh;
+			padding: 0 1rem 0rem 1rem;
+			width: 35%;
+			margin-left: auto;
+			margin-right: auto;
+			min-width: 590px;
+		}
+
+		p.text-white {
+			color: white;
+		}
+
+		.top-bottom-padding {
+			padding: 2rem 0rem;
+		}
+
+		.vertical-center-parent {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.vertical-center-child {
+
+		}
+
+		.main-content {
+			max-width: 460px;
+			width: 100%;
+		}
+
+		.btn:hover {
+			transform: translateY(-1px);
+			box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
+		}
+
+		.btn:active {
+			transform: translateY(1px);
+			box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
+		}
+
+		.text-or {
+			display: inline-block;
+			font-family: Escafina-High;
+			font-size: 1.5rem;
+			margin-top: 0.5rem;
+			width: 10%;
+		}
+
+		.button-container {
+			max-width: 600px; 
+			margin-left: auto; 
+			margin-right: auto; 
+			padding-bottom: 4rem;
+		}
+
+		button.btn-play {
+			background-color: #26641F;
+			color: rgba(255,255,255,0.95);
+			width: 50%;
+			min-width: 175px;
+			margin-right: auto;
+			margin-left: auto;
+			font-size: 1.5rem;
+			letter-spacing: 1px;
+			font-weight: 500;
+			padding-top: 10px !important;
+			font-family: Avenir-Medium;
+		}
+
+		button.btn-play:active, button.btn-play:hover {
+			background-color: white;
+			color: #26641F;
+		}
+
+		button.btn-answer {
+			background-color: #D8212C;
+			color: white;
+			font-family: Escafina-Low;
+			font-size: 2.5rem;
+			padding-top: 0.1rem;
+			padding-bottom: 0.1rem;
+			width: 40%;
+		}
+
+		button.btn-answer:active, button.btn-answer:hover {
+			background-color: white;
+			color: #D8212C;
+		}
+
+
+		button.btn-next {
+			background-color: #D7AC56;
+			width: 64px;
+			height: 64px; 
+			border-radius: 32px;
+		}
+
+		div.red-ribbon-container {
+			height: 80vh;
+			background-color: #AF0B24;
+			-webkit-clip-path: polygon(100% 0, 100% 100%, 50% 90%, 0 100%, 0 0);
+			clip-path: polygon(100% 0, 100% 100%, 50% 90%, 0 100%, 0 0);
+
+		}
+
+		div.red-ribbon-top  {
+			height: 72vh;
+		}
+
+
+		#responseHeader {
+			font-size: 10rem;
+			font-family: Escafina-High;
+			text-shadow: none;
+		}
+
+
+		div.game-over-banner {
+			max-width: 600px; 
+			width: 100%;
+			margin-left: auto; 
+			margin-right: auto;
+			background-color: #041002;
+			color: white;
+			text-align: center;
+			padding: 1rem 2.1rem;
+			line-height: 2.8rem;
+			font-size: 1.8rem;
+			font-family: Avenir-Light;
+			-webkit-clip-path: polygon(50% 0, 100% 0, 93% 50%, 100% 100%, 0 100%, 8% 50%, 0 0);
+			clip-path: polygon(50% 0, 100% 0, 93% 50%, 100% 100%, 0 100%, 8% 50%, 0 0);
+		}
+
+		@media only screen and (max-width: 1000px) {
+			div.red-ribbon-container {
+				width: 75%;
+				min-width: 0;
+			}
+
+			.button-container {
+				padding-bottom: 2.5rem;
+			}
+
+			#responseHeader {
+				font-size: 7rem;
+			}
+
+			div.game-over-banner { 
+				font-size: 1.4rem;
+				line-height: 2rem;
+			}
+
+		}
+
+		.promo-text-top {
+			font-size: 2rem;
+			padding: 0; 
+			margin: 0; 
+		}
+
+		.promo-text-bottom {
+			padding: 0; 
+			margin: 0; 
+			font-size: 1.4rem; 
+			font-family: Avenir-Medium;
+		}
+
+		.over-title {
+			font-size: 2.3rem;
+			margin-bottom: 0; 
+			font-family: Escafina-High; 
+			color: #D02C37; 
+			text-shadow: none; 
+			display: inline-block; 
+			width: 100%;
+		}
+
+		@media only screen and (max-width: 450px) {
+			div.red-ribbon-container {
+				width: 100%;
+				min-width: 0;
+			}
+
+			.top-bottom-padding {
+				padding: 1rem 0rem;
+			}
+
+			.text-or {
+				padding: 0 0.5rem;
+				margin-top: 0.5rem;
+				font-size: 1rem;
+			}
+
+			.button-container {
+				padding-bottom: 1.5rem;
+			}
+
+			#responseHeader {
+				font-size: 5rem;
+			}
+
+			button.btn-answer {
+				font-size: 1.8rem;
+			}
+
+			div.red-ribbon-top  {
+				height: 85vh;
+			}
+
+			div.red-ribbon-container  {
+				height: 95vh;
+			}
+
+			div.game-over-banner {
+				/*-webkit-clip-path: polygon(50% 0, 100% 0, 90% 50%, 100% 100%, 0 100%, 10% 50%, 0 0);*/
+				/*clip-path: polygon(50% 0, 100% 0, 90% 50%, 100% 100%, 0 100%, 10% 50%, 0 0);*/
+				font-size: 1rem;
+				padding-top: 0.8rem;
+				padding-bottom: 0.8rem;
+				line-height: 1.5rem;
+			}
+
+			.promo-text-top {
+				font-size: 1.5rem;
+			}
+
+			.promo-text-bottom { 
+				font-size: 1.1rem;
+			}
+			
+			.over-title {
+				font-size: 1.7rem;
+			}
+		}
+
+
+
+	</style>
+
+	<script type="text/javascript">
+
+		var currentLevelIndex = 0;
+		var score = 0; 
+
+		var levels = [
+			{	
+				"index": 1,
+				"question": "Bah-humbuging over earmuffs? Or lightening your 'elfie?",
+				"answer": null,
+				"correct": "present"
+			},
+			{	
+				"index": 2,
+				"question": "Unwrapping a re-gift? Or being revisited by Christmas dinner?",
+				"answer": null,
+				"correct": "present"
+			},
+			{	
+				"index": 3,
+				"question": "Yet another gift card? Or making an unexpected deposit? ",
+				"answer": null,
+				"correct": "poop"
+			},
+			{	
+				"index": 4,
+				"question": "Unpleasant Present? Or riding the porcelain sleigh?",
+				"answer": null,
+				"correct": "present"
+			},
+			{	
+				"index": 5,
+				"question": "Lame gag gift? Or laying a yule log?",
+				"answer": null,
+				"correct": "present"
+			},
+			{	
+				"index": 6,
+				"question": "Shocking stocking stuffer? Or need to un-stuff your stocking?",
+				"answer": null,
+				"correct": "present"
+			},
+			{	
+				"index": 7,
+				"question": "Lousy loot under the tree? Or a backed up chimney?",
+				"answer": null,
+				"correct": "poop"
+			},
+			{	
+				"index": 8,
+				"question": "Grimace-in-a-box? Or un-grinching yourself?",
+				"answer": null,
+				"correct": "poop"
+			},
+			{	
+				"index": 9,
+				"question": "Father Christmas fail? Or Mother Nature calling?",
+				"answer": null,
+				"correct": "poop"
+			}
+		];
+		
+		$.fn.preload = function() {
+		    this.each(function(){
+		        $('<img/>')[0].src = this;
+		    });
+		}
+
+		$.fn.isMobileDevice = function() {
+			return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+		}
+
+		function shuffle(a) {
+		    var j, x, i;
+		    for (i = a.length - 1; i > 0; i--) {
+		        j = Math.floor(Math.random() * (i + 1));
+		        x = a[i];
+		        a[i] = a[j];
+		        a[j] = x;
+		    }
+		}
+
+		
+		
+
+		$(document).ready(e => {
+			$('#playContainer').hide()
+			$('#responseContainer').hide()
+			$('#gameOverContainer').hide()
+
+			$('#playButton').click(pressedPlay)
+
+			$('#answerPresentButton').click(pressedPresent)
+
+			$('#answerPoopButton').click(pressedPoop)
+
+			$('#nextButton').click(nextLevel)
+
+			setUpGame();
+
+
+
+		})
+
+		function setUpGame() {
+
+			var faces = [];
+			var newLevels = []	
+
+			shuffle(levels)
+
+			for (var i = 0; i < 5; i++) {
+				levels[i]["desktop_img"] = './assets/img/desktop/faces/' + levels[i]["index"] + '.jpg';
+				levels[i]["mobile_img"] = './assets/img/mobile/faces/' + levels[i]["index"] + '.jpg';
+				faces.push(levels[i]["desktop_img"]);
+				faces.push(levels[i]["mobile_img"]);
+				newLevels.push(levels[i])
+			}
+
+			levels = newLevels
+
+			console.log(levels)
+
+			$(faces).preload()
+
+			if ($().isMobileDevice()) {
+				var bgURL = "url(./assets/img/mobile-game-over-bg.png) no-repeat center center fixed";
+				$('#gameOverContainer').css("background", bgURL);
+				$('#gameOverContainer').css("background-size", "cover");
+				$('#gameOverContainer').css("-webkit-background-size:", "cover");
+				$('#gameOverContainer').css("-moz-background-size:", "cover");
+				$('#gameOverContainer').css("-o-background-size:", "cover");
+			}
+		}
+
+
+		function pressedPlay(e) {
+			nextLevel(e)
+		}
+
+		function pressedPresent(e) {
+			levels[currentLevelIndex - 1]["answer"] = "present"
+			showResponse()
+		}
+
+		function pressedPoop(e) {
+			levels[currentLevelIndex - 1]["answer"] = "poop"
+			showResponse()
+		}
+
+		function showResponse() {
+
+			var correct = levels[currentLevelIndex - 1]["answer"] == levels[currentLevelIndex - 1]["correct"]
+
+			var audio; 
+
+			if (correct) {
+				score++;
+				$('#responseHeader').html("Right")
+				$('#responseBody').html("Nice job!")
+				var sound = new Audio('./assets/sounds/correct.mp3');
+				sound.play()
+			} else {
+				$('#responseHeader').html("Wrong")
+				$('#responseBody').html("Correct answer: " + levels[currentLevelIndex - 1]["correct"])
+				var sound = new Audio('./assets/sounds/wrong.mp3');
+				sound.play()
+			}
+
+			$('#playContainer').hide()
+			$('#responseContainer').show()
+		}
+
+		function nextLevel(e) {
+
+			if (currentLevelIndex == 5) {
+				gameOver()
+				return 
+			}
+
+			$('#responseContainer').hide()
+			$('#startContainer').hide()
+			$('#playContainer').show()
+
+
+			var deviceType = "desktop_img";
+
+			if ($().isMobileDevice()) {
+				deviceType = 'mobile_img'
+			}
+
+			var level = levels[currentLevelIndex];
+
+			var bgURL = "url(" + level[deviceType] + ") no-repeat center center fixed";
+			$('#playContainer').css("background", bgURL);
+			$('#playContainer').css("background-size", "cover");
+			$('#playContainer').css("-webkit-background-size:", "cover");
+			$('#playContainer').css("-moz-background-size:", "cover");
+			$('#playContainer').css("-o-background-size:", "cover");
+
+			$('#questionText').html(level["question"])
+
+			currentLevelIndex++;
+
+		}
+
+
+
+		function gameOver() {
+			$('#responseContainer').hide()
+			$('#startContainer').hide()
+			$('#playContainer').hide()
+			$('#gameOverContainer').show()
+			if (score <= 3) {
+				$('#gameOverText').html("Womp womp!<br>Nice try, but you don't know sh*t!")
+			}
+		}
+
+		function copyToClipboard(text) {
+			var $temp = $("<input>");
+			$("body").append($temp);
+			$temp.val(text).select();
+			document.execCommand("copy");
+			$temp.remove();
+		}
+
+		function copyLink() {
+			copyToClipboard("Check out this funny game I came accross! http://shitpresentorpoop.com")
+			alert("Link copied!")
+		}
+
+	</script>
+
+</head>
+
+<body>
+
+	<div id="startContainer" class="container-fluid start-container">
+		<div class="red-ribbon-container">
+			<div class="red-ribbon-top vertical-center-parent">
+				<div class="vertical-center-child text-center">
+					<img class="img-fluid main-content" src="./assets/img/spop-logo.png">
+					
+					<p class="text-white text-center top-bottom-padding main-content" style="padding-left: 1rem; padding-right: 1rem; text-shadow: none;"> 
+						Trying to hide how much you hate a shit present is a lot like trying to pretend nature isn't calling for a ride on the porcelain sleigh.<br><br>Can you tell when they're full of it?
+					</p>
+
+					<button id="playButton" class="btn btn-play">PLAY GAME</button>
+				</div>
+
+			</div>
+
+			<div class="red-ribbon-left">
+
+			</div>
+
+			<div class="red-ribbon-right">
+
+			</div>
+
+		</div>
+	</div>
+
+	<div id="playContainer" class="container-fluid play-container" style="color: white;">
+		<img class="img-fluid main-content" src="./assets/img/spop-logo.png" style="width: 40%; max-width: 200px; margin-top: 1rem; ">
+
+
+
+		<div class="text-center" style="position: fixed; bottom: 0; left: 0; width: 100%;">
+			<div class="button-container">
+				<p style="padding: 1rem; font-size: 1.3rem;" id="questionText">Trying to hide how much you hate a shit present is a lot like Trying to hide how much you hate a shit present is a lot like Trying to hide how much you hate a shit present is a lot like </p>
+				<button id="answerPresentButton" class="btn btn-answer">Present</button>
+				<div class="text-or">Or</div>
+				<button id="answerPoopButton" class="btn btn-answer">Poop</button>
+			</div>
+
+		</div>
+	</div>
+	
+
+
+	<div id="responseContainer" class="container-fluid response-container vertical-center-parent">
+		<div class="text-center" style="color: white; text-shadow: none;">
+			<h1 id="responseHeader" style="">Wrong</h1>
+			<p id="responseBody" style="font-size: 1.4rem; font-weight: 300;">Good job!</p>
+			 <br>
+			<button id="nextButton" class="btn btn-next">
+				<svg style="margin-left: -3px; margin-top: 1px;" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"> <g class="nc-icon-wrapper" fill="#E30023"> <path d="M20 12l-2.83 2.83L26.34 24l-9.17 9.17L20 36l12-12z"></path> </g> </svg>
+			</button>
+		</div>
+	</div>
+
+	<style type="text/css">
+		
+		div.two-lines {
+			height: 10px; 
+			border-bottom: 1px solid #D02C37;
+			border-top: 1px solid #D02C37;
+			width: 100%;
+		}
+
+		.element {
+		  position: relative;
+		  top: 50%;
+		  transform: perspective(1px) translateY(-50%);
+		}
+
+		.social-button {
+			width: 44px;
+			height: 44px;
+			margin: 0.5rem;
+		}
+
+
+	</style>
+
+	<div id="gameOverContainer" class="container-fluid game-over-container">
+		<img class="img-fluid main-content" src="./assets/img/spop-logo.png" style="width: 40%; max-width: 200px; margin-top: 1rem;">
+
+		<div id="gameOverBanner" class="game-over-banner" style="margin-top: 2rem;">
+			<p id="gameOverText" style="padding: 0; margin: 0;">Congrats — You sleighed it!</p>
+		</div>
+		
+		<div style="max-width: 800px; width: 100%; margin-right: auto; margin-left: auto; text-align: center; padding-top: 3rem;">
+			
+			<div class="row">
+				<div class="col-2 vertical-center-parent" style=""><div class="two-lines"></div></div>
+
+				<h2 class="col-8 over-title" style="padding: 0;">
+					This year, don't give shit gifts
+				</h2>
+
+				<div class="col-2 vertical-center-parent" style=""><div class="two-lines"></div></div>
+			</div>
+
+			<img class="img-fluid main-content" src="./assets/img/happy-box-logo.png" style="width: 30%; max-width: 150px; margin: 2rem 0 1rem 0;">
+			
+			<a href="http://happyboxstore.com"></a>
+				<div style="width: 100%; min-width: 280px; margin-top: 1rem; margin-right: auto; margin-left: auto; text-shadow: none;">
+					<p class="promo-text-top">
+						Use <span style="font-family: Avenir-Medium;"> GIFTHAPPY</span> For
+					</p>
+					<p class="promo-text-bottom">
+						<span style="font-family: Escafina-High;">25%</span> off happyboxstore.com
+					</p>
+				</div>
+
+			<p style="font-family: Avenir-Medium; text-shadow: none; margin-top: 2rem;">SHARE THE GAME</p>
+
+			<a href="#" onclick="copyLink()"><img class="social-button" src="./assets/img/share.png"></a>
+			<a target="_blank" href="mailto:?body=this+is+a+test"><img class="social-button" src="./assets/img/email.png"></a>
+			<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=shitpresentorpoop.com"><img class="social-button" style="width: 35px; height: 35px;" src="./assets/img/facebook.png"></a>
+			<a target="_blank" href="https://twitter.com/home?status=shitpresentorpoop.com"><img class="social-button" style="width: 35px; height: 35px;" src="./assets/img/twitter.png"></a>
+
+
+		</div>
+	</div>
+
+</body>
+
+</html>
