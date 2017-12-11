@@ -89,6 +89,7 @@
 		div.red-ribbon-container {
 			width: 100%;
 			height: 85vh;
+			min-height: 615px;
 			padding: 0 1rem 0rem 1rem;
 			width: 35%;
 			margin-left: auto;
@@ -135,6 +136,7 @@
 			font-size: 1.5rem;
 			margin-top: 0.5rem;
 			width: 10%;
+			text-shadow: none;
 		}
 
 		.button-container {
@@ -196,6 +198,7 @@
 
 		div.red-ribbon-top  {
 			height: 72vh;
+			min-height: 515px;
 		}
 
 
@@ -416,7 +419,7 @@
 		}
 
 		
-		
+		var rightSound, wrongSound;
 
 		$(document).ready(e => {
 			$('#playContainer').hide()
@@ -433,6 +436,8 @@
 
 			setUpGame();
 
+			rightSound = new Audio('./assets/sounds/correct.mp3');
+			wrongSound = new Audio('./assets/sounds/wrong.mp3');
 
 
 		})
@@ -471,7 +476,7 @@
 
 		function pressedPlay(e) {
 			nextLevel(e)
-			// gameOver()
+			gameOver()
 		}
 
 		function pressedPresent(e) {
@@ -488,19 +493,22 @@
 
 			var correct = levels[currentLevelIndex - 1]["answer"] == levels[currentLevelIndex - 1]["correct"]
 
-			var audio; 
+			rightSound.pause()
+			wrongSound.pause()
+
+			rightSound.currentTime = 0
+			wrongSound.currentTime = 0
+
 
 			if (correct) {
 				score++;
 				$('#responseHeader').html("Right")
 				$('#responseBody').html("Nice job!")
-				var sound = new Audio('./assets/sounds/correct.mp3');
-				sound.play()
+				rightSound.play()
 			} else {
 				$('#responseHeader').html("Wrong")
 				$('#responseBody').html("Correct answer: " + levels[currentLevelIndex - 1]["correct"])
-				var sound = new Audio('./assets/sounds/wrong.mp3');
-				sound.play()
+				wrongSound.play()
 			}
 
 			$('#playContainer').hide()
@@ -598,7 +606,7 @@
 	</div>
 
 	<div id="playContainer" class="container-fluid play-container" style="color: white;">
-		<img class="img-fluid main-content" src="./assets/img/spop-logo.png" style="width: 40%; max-width: 200px; margin-top: 1rem; ">
+		<img class="img-fluid main-content" src="./assets/img/spop-logo-shadow.png" style="width: 40%; max-width: 200px; margin-top: 1rem; ">
 
 
 
@@ -606,7 +614,7 @@
 			<div class="button-container">
 				<p style="padding: 1rem; font-size: 1.3rem;" id="questionText">Trying to hide how much you hate a shit present is a lot like Trying to hide how much you hate a shit present is a lot like Trying to hide how much you hate a shit present is a lot like </p>
 				<button id="answerPresentButton" class="btn btn-answer">Present</button>
-				<div class="text-or">Or</div>
+				<div class="text-or">or</div>
 				<button id="answerPoopButton" class="btn btn-answer">Poop</button>
 			</div>
 
@@ -663,14 +671,14 @@
 	<div id="gameOverContainer" class="container-fluid game-over-container">
 		<a href="/" target="_blank" class="code-link">
 		
-			<img class="img-fluid main-content" src="./assets/img/spop-logo.png" style="width: 40%; max-width: 200px; margin-top: 1rem;">
+			<img class="img-fluid main-content" src="./assets/img/spop-logo-shadow.png" style="width: 40%; max-width: 200px; margin-top: 1rem;">
 		</a>
 
-		<div id="gameOverBanner" class="game-over-banner" style="margin-top: 2rem;">
+		<div id="gameOverBanner" class="game-over-banner" style="margin-top: 1rem;">
 			<p id="gameOverText" style="padding: 0; margin: 0;">Congrats — You sleighed it!</p>
 		</div>
 		
-		<div style="max-width: 800px; width: 100%; margin-right: auto; margin-left: auto; text-align: center; padding-top: 3rem;">
+		<div style="max-width: 800px; width: 100%; margin-right: auto; margin-left: auto; text-align: center; padding-top: 2rem;">
 			
 			<div class="row">
 				<div class="col-2 vertical-center-parent" style=""><div class="two-lines"></div></div>
@@ -682,7 +690,7 @@
 				<div class="col-2 vertical-center-parent" style=""><div class="two-lines"></div></div>
 			</div>
 			<a href="http://happyboxstore.com" target="_blank" class="code-link">
-				<img class="img-fluid main-content" src="./assets/img/happy-box-logo.png" style="width: 30%; max-width: 150px; margin: 2rem 0 1rem 0;">
+				<img class="img-fluid main-content" src="./assets/img/happy-box-logo.png" style="width: 30%; max-width: 150px; margin: 1rem 0 0rem 0;">
 			</a>
 			
 			<a href="http://happyboxstore.com" target="_blank" class="code-link">
@@ -696,7 +704,7 @@
 				</div>
 			</a>
 
-			<p style="font-family: Avenir-Medium; text-shadow: none; margin-top: 2rem;">SHARE THE GAME</p>
+			<p style="font-family: Avenir-Medium; text-shadow: none; margin-top: 2rem; margin-bottom: 0;">SHARE THE GAME</p>
 
 			<a class="hidden-mobile" href="#" onclick="copyLink()"><img class="social-button" src="./assets/img/share.png"></a>
 			<a target="_blank" href="mailto:?body=this+is+a+test"><img class="social-button" src="./assets/img/email.png"></a>
